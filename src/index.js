@@ -13,12 +13,16 @@ document.addEventListener("DOMContentLoaded", () => {
   
   function createTask(descrip) {
     const li = document.createElement('li');
+    
     const span = document.createElement('span')
     span.textContent = `${descrip} `;
+    span.addEventListener('dblclick', editTask);
     li.appendChild(span)
+
     const bttn = document.createElement('button');
     bttn.textContent = 'x';
     bttn.addEventListener('click', handleDelete);
+
     li.appendChild(bttn);
     return li;
   }
@@ -56,5 +60,19 @@ document.addEventListener("DOMContentLoaded", () => {
   function removeChildren(container) {
     const children = Array.from(container.children);
     children.forEach(child => child.remove());
+  }
+
+  function editTask(e) {
+    const previousText = e.target.innerText;
+    const task = e.target;
+    task.innerText = '';
+    const input = document.createElement('input');
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        task.textContent = e.target.value || previousText;
+        task.textContent += ' ';
+      }
+    })
+    task.appendChild(input);
   }
 });
