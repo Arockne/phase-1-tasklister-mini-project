@@ -1,12 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  //point towards the form
-  //on the forms submit grab the value
-
-  //create a list item
-    //append the value from the form
-    //append a button with an x
-    //add an event handler to the button when clicked to delete the entire list element
-
+  //impement dropdown that is used to determin the color of the text in the list
+  
   const form = document.querySelector('form');
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -25,8 +19,16 @@ document.addEventListener("DOMContentLoaded", () => {
     li.appendChild(bttn);
     return li;
   }
-
+  
   function handleDelete(e) {
     e.target.parentNode.remove();
+  }
+  
+  function priorityObject() {
+    const priority = {
+      'low': 'green',
+      'medium': 'yellow',
+      'high': 'red'
+    }
   }
 });
