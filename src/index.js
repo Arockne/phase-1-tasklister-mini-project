@@ -6,13 +6,16 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const descrip = e.target.querySelector('#new-task-description').value;
     const task = createTask(descrip);
+    //selectPriorityColor(e, task);
     const taskBar = document.querySelector('#tasks');
     taskBar.appendChild(task);
   })
   
   function createTask(descrip) {
     const li = document.createElement('li');
-    li.textContent = `${descrip} `;
+    const span = document.createElement('span')
+    span.textContent = `${descrip} `;
+    li.appendChild(span)
     const bttn = document.createElement('button');
     bttn.textContent = 'x';
     bttn.addEventListener('click', handleDelete);
@@ -25,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   function priorityObject() {
-    const priority = {
+    return {
       'low': 'green',
       'medium': 'yellow',
       'high': 'red'
