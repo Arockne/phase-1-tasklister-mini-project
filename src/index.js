@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     selectPriorityColor(e, task);
     const taskBar = document.querySelector('#tasks');
     taskBar.appendChild(task);
+    sortByPriority(taskBar);
   })
   
   function createTask(descrip) {
@@ -40,6 +41,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const priority = priorityObject();
     const taskDescription = task.firstChild;
     taskDescription.style.color = priority[priorityLevel];
-    taskDescription.className = priority[priorityLevel];
+    task.className = priorityLevel;
+  }
+
+  //sorting function
+  function sortByPriority(taskBar) {
+    const low = taskBar.querySelectorAll('.low');
+    const medium = taskBar.querySelectorAll('.medium');
+    const high = taskBar.querySelectorAll('.high');
+    const lowToHigh = [...low, ...medium, ...high];
+    removeChildren(taskBar);
+    lowToHigh.forEach(task => taskBar.appendChild(task));
+  }
+
+  function removeChildren(container) {
+    const children = Array.from(container.children);
+    children.forEach(child => child.remove());
   }
 });
