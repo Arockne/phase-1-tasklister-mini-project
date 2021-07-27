@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const input = document.createElement('input');
     input.addEventListener('keydown', e => {
       if (e.key === 'Enter') {
-        task.textContent = e.target.value || previousText;
+        task.textContent = e.target.value.trim() || previousText;
         task.textContent += ' ';
       }
     })
