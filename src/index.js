@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  //impement dropdown that is used to determin the color of the text in the list
-  
   const form = document.querySelector('form');
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -50,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const low = taskBar.querySelectorAll('.low');
     const medium = taskBar.querySelectorAll('.medium');
     const high = taskBar.querySelectorAll('.high');
-    const lowToHigh = [...low, ...medium, ...high];
+    const lowToHigh = [...high, ...medium, ...low];
     removeChildren(taskBar);
     lowToHigh.forEach(task => taskBar.appendChild(task));
   }
