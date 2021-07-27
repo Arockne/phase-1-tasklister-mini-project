@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener('submit', e => {
     e.preventDefault();
     const descrip = e.target.querySelector('#new-task-description').value;
+    if (!descrip) return;
     const task = createTask(descrip);
     selectPriorityColor(e, task);
     const taskBar = document.querySelector('#tasks');
