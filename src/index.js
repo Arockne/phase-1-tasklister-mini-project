@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const descrip = e.target.querySelector('#new-task-description').value;
     const task = createTask(descrip);
-    //selectPriorityColor(e, task);
+    selectPriorityColor(e, task);
     const taskBar = document.querySelector('#tasks');
     taskBar.appendChild(task);
   })
@@ -33,5 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
       'medium': 'yellow',
       'high': 'red'
     }
+  }
+
+  function selectPriorityColor(e, task) {
+    const priorityLevel = e.target.querySelector('select').value;
+    const priority = priorityObject();
+    const taskDescription = task.firstChild;
+    taskDescription.style.color = priority[priorityLevel];
   }
 });
