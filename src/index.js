@@ -40,5 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const priority = priorityObject();
     const taskDescription = task.firstChild;
     taskDescription.style.color = priority[priorityLevel];
+    taskDescription.className = priority[priorityLevel];
   }
 });
